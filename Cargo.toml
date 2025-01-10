@@ -1,0 +1,19 @@
+[package]
+name = "consul-help"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.23", features = ["derive"] }
+clio = "0.3.5"
+consulrs = "0.1.0"
+serde = {version = "1.0.217", features = ["derive"]}
+serde_yaml = "0.9.34"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+
+[profile.release]
+strip = true  # Automatically strip symbols from the binary.
+opt-level = "s"  # Optimize for size.
+lto = true
+codegen-units = 1
+panic = "abort"
